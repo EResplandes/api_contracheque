@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\ContrachequeController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\FuncionarioController;
 
@@ -41,3 +42,11 @@ Route::prefix('funcionarios')->group(function () {
         Route::post('/cadastrar', 'cadastrarFuncionario');
     });
 });
+
+// Módulo de Contracheques
+Route::prefix('contracheque')->group(function() {
+    Route::controller(ContrachequeController::class)->group(function() {
+        Route::get('/listar/{id}', 'listarContrachequePorFuncionario');
+        Route::post('/cadastrar', 'cadastrarContracheque');
+    });
+})
