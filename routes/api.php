@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,13 @@ Route::prefix('empresas')->group(function () {
     Route::controller(EmpresaController::class)->group(function () {
         Route::get('/listar', 'listarEmpresas');
         Route::post('/cadastrar', 'cadastrarEmpresa');
+    });
+});
+
+// Módulo de Funcionários
+Route::prefix('funcionarios')->group(function () {
+    Route::controller(FuncionarioController::class)->group(function () {
+        Route::get('/listar', 'listarFuncionarios');
+        Route::post('/cadastrar', 'cadastrarFuncionario');
     });
 });
